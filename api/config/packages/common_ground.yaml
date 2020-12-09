@@ -8,17 +8,19 @@ parameters:
     env(APP_COMMONGROUND_ID): ""
     env(APP_COMMONGROUND_KEY): ""
     env(APP_COMMONGROUND_SECRET): ""
+    env(APP_COMMONGROUND_SECRET_KEY): ""
 
     common_ground.app.id: "%env(APP_COMMONGROUND_ID)%"
     app_commonground_id: "%env(APP_COMMONGROUND_ID)%"
     app_commonground_key: "%env(APP_COMMONGROUND_KEY)%"
     app_commonground_secret: "%env(APP_COMMONGROUND_SECRET)%"
+    app_commonground_secret_key: "%env(APP_COMMONGROUND_SECRET_KEY)%"
 
     # Application Parameters
     env(APP_ENV): "prod"
     env(APP_DEBUG):
     env(APP_CACHE):
-    env(APP_AUTH):
+    env(AUTH_ENABLED):
     env(AUDITTRAIL_ENABLED): ""
     env(NOTIFICATION_ENABLED):
     env(HEALTH_ENABLED):
@@ -46,7 +48,7 @@ parameters:
     app_env: "%env(APP_ENV)%"
     app_debug: "%env(APP_DEBUG)%"
     app_cache: "%env(APP_CACHE)%"
-    app_auth: "%env(APP_AUTH)%"
+    app_auth: "%env(AUTH_ENABLED)%"
     app_audittrail: "%env(AUDITTRAIL_ENABLED)%"
     app_notification: "%env(NOTIFICATION_ENABLED)%"
     app_health: "%env(HEALTH_ENABLED)%"
@@ -200,13 +202,13 @@ parameters:
             secret: "%env(APP_COMMONGROUND_DRC_SECRET)%"
             accept: "application/json"
             autowire: false
-        ac:
-            location: "%env(APP_COMMONGROUND_AC_LOCATION)%"
-            auth: "jwt"
-            id: "%env(APP_COMMONGROUND_AC_ID)%"
-            secret: "%env(APP_COMMONGROUND_AC_SECRET)%"
-            accept: "application/json"
-            autowire: false
+#        ac:
+#            location: "%env(APP_COMMONGROUND_AC_LOCATION)%"
+#            auth: "jwt"
+#            id: "%env(APP_COMMONGROUND_AC_ID)%"
+#            secret: "%env(APP_COMMONGROUND_AC_SECRET)%"
+#            accept: "application/json"
+#            autowire: false
         nrc:
             location: "%env(APP_COMMONGROUND_NRC_LOCATION)%"
             auth: "jwt"
