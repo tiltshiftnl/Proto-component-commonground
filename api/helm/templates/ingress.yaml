@@ -1,4 +1,4 @@
-{{ if or (eq .Values.settings.type "application") .Values.settings.web }}
+{{ if or (eq .Values.config.type "application") .Values.config.web }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -7,115 +7,113 @@ metadata:
         #    cert-manager.io/acme-challenge-type: http01
         #    cert-manager.io/cluster-issuer: letsencrypt-prod
         nginx.ingress.kubernetes.io/rewrite-target: /$1
-    name: {{ .Values.settings.name }}-{{ .Values.settings.env }}-ingress
+    name: {{ .Values.config.name }}-{{ .Values.config.env }}-ingress
     labels:
-        app.kubernetes.io/name: {{ .Values.settings.name }}-ingress
-        app.kubernetes.io/part-of: {{ .Values.settings.name }}
+        app.kubernetes.io/name: {{ .Values.config.name }}-ingress
+        app.kubernetes.io/part-of: {{ .Values.config.name }}
         helm.sh/chart: {{ include "chart" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
         app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
     #  tls: 
     #  - hosts: 
-    #    - {{ $.Values.settings.domain }}
+    #    - {{ $.Values.config.domain }}
     #    secretName: {{ template "fullname" . }}
     rules:
-      {{- if and (or (eq $.Values.settings.env "prod") (eq $.Values.settings.env "stag")) (eq $.Values.settings.type "component") }}
+      {{- if and (or (eq $.Values.config.env "prod") (eq $.Values.config.env "stag")) (eq $.Values.config.type "component") }}
 
-        - host: {{ $.Values.settings.domain }}
+        - host: {{ $.Values.config.domain }}
           http:
               paths:
-                  - path: /api/{{ $.Values.settings.majorVersion }}/{{ $.Values.settings.subpath }}/(.*)
+                  - path: /api/{{ $.Values.config.majorVersion }}/{{ $.Values.config.subpath }}/(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-                  - path: /api/{{ $.Values.settings.majorVersion }}/{{ $.Values.settings.subpath }}(.*)
+                  - path: /api/{{ $.Values.config.majorVersion }}/{{ $.Values.config.subpath }}(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-        - host: www.{{ $.Values.settings.domain }}
+        - host: www.{{ $.Values.config.domain }}
           http:
               paths:
-                  - path: /api/{{ $.Values.settings.majorVersion }}/{{ $.Values.settings.subpath }}/(.*)
+                  - path: /api/{{ $.Values.config.majorVersion }}/{{ $.Values.config.subpath }}/(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-                  - path: /api/{{ $.Values.settings.majorVersion }}/{{ $.Values.settings.subpath }}(.*)
+                  - path: /api/{{ $.Values.config.majorVersion }}/{{ $.Values.config.subpath }}(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-      {{- else if and (or (eq $.Values.settings.env "prod") (eq $.Values.settings.env "stag")) $.Values.settings.subpath }}
-        - host: {{ $.Values.settings.domain }}
+      {{- else if and (or (eq $.Values.config.env "prod") (eq $.Values.config.env "stag")) $.Values.config.subpath }}
+        - host: {{ $.Values.config.domain }}
           http:
               paths:
-                  - path: /{{ $.Values.settings.subpath }}/(.*)
+                  - path: /{{ $.Values.config.subpath }}/(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-                  - path: /{{ $.Values.settings.subpath }}(.*)
+                  - path: /{{ $.Values.config.subpath }}(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-        - host: www.{{ $.Values.settings.domain }}
+        - host: www.{{ $.Values.config.domain }}
           http:
               paths:
-                  - path: /{{ $.Values.settings.subpath }}/(.*)
+                  - path: /{{ $.Values.config.subpath }}/(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-                  - path: /{{ $.Values.settings.subpath }}(.*)
+                  - path: /{{ $.Values.config.subpath }}(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-      {{- else if or (eq $.Values.settings.env "prod") (eq $.Values.settings.env "stag") }}
-        - host: {{ $.Values.settings.domain }}
+      {{- else if or (eq $.Values.config.env "prod") (eq $.Values.config.env "stag") }}
+        - host: {{ $.Values.config.domain }}
           http:
               paths:
                   - path: /(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-        - host: www.{{ $.Values.settings.domain }}
+        - host: www.{{ $.Values.config.domain }}
           http:
               paths:
                   - path: /(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-      {{- else if eq $.Values.settings.type "component" }}
-        - host: {{ $.Values.settings.env }}.{{ $.Values.settings.domain }}
+      {{- else if eq $.Values.config.type "component" }}
+        - host: {{ $.Values.config.env }}.{{ $.Values.config.domain }}
           http:
               paths:
 
-                  - path: /api/{{ $.Values.settings.majorVersion }}/{{ $.Values.settings.subpath }}/(.*)
+                  - path: /api/{{ $.Values.config.majorVersion }}/{{ $.Values.config.subpath }}/(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-                  - path: /api/{{ $.Values.settings.majorVersion }}/{{ $.Values.settings.subpath }}(.*)
+                  - path: /api/{{ $.Values.config.majorVersion }}/{{ $.Values.config.subpath }}(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-      {{- else if $.Values.settings.subpath }}
-        - host: {{ $.Values.settings.env }}.{{ $.Values.settings.domain }}
+      {{- else if $.Values.config.subpath }}
+        - host: {{ $.Values.config.env }}.{{ $.Values.config.domain }}
           http:
               paths:
-
-                  - path: /{{ $.Values.settings.subpath }}/(.*)
+                  - path: /{{ $.Values.config.subpath }}/(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
-                  - path: /{{ $.Values.settings.subpath }}(.*)
+                  - path: /{{ $.Values.config.subpath }}(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
       {{- else }}
-        - host: {{ $.Values.settings.env }}.{{ $.Values.settings.domain }}
+        - host: {{ $.Values.config.env }}.{{ $.Values.config.domain }}
           http:
               paths:
-
                   - path: /(.*)
                     backend:
-                        serviceName: {{ $.Values.settings.name }}
+                        serviceName: {{ $.Values.config.name }}
                         servicePort: 80
       {{- end }}
   {{ end }}
