@@ -69,13 +69,11 @@ spec:
                 configMapKeyRef:
                   name: {{ template "fullname" . }}
                   key: debug
-            {{ if .Values.config.id }}
             - name: APP_ID
               valueFrom:
                     configMapKeyRef:
                         name: {{ template "fullname" . }}
                         key: app-id
-            {{ end }}
             - name: APP_DOMAIN
               valueFrom:
                   configMapKeyRef:
@@ -136,7 +134,7 @@ spec:
                   configMapKeyRef:
                       name: {{ template "fullname" . }}
                       key: eherkenning-location
-            {{- if (eq $.Values.config.type "application" ) }}
+          {{ if .Values.redis.enabled }}
             - name: REDIS_HOST
               valueFrom:
                 configMapKeyRef:

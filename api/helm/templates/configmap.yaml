@@ -35,7 +35,7 @@ data:
   digispoof-location: {{ .Values.commonground.digispoof.location }}
   eherkenning-location: {{ .Values.commonground.eherkenning.location }}
 
-  {{- if (eq $.Values.config.type "application" ) }}
+  {{- if .Values.redis.enabled }}
   redis-host: {{ printf "%s-redis" $redisServiceName | quote }}
   redis-port: {{ .Values.redis.redisPort | toString | quote }}
 
