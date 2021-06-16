@@ -94,6 +94,8 @@ mercure:
     port: 80
 
 ingress:
+  host: proto-component.local
+  path: /api
   annotations:
     # kubernetes.io/ingress.global-static-ip-name: chart-ip
     # kubernetes.io/ingress.class: gce

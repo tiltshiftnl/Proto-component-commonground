@@ -56,6 +56,8 @@ parameters:
     env(APP_MAJOR_VERSION): "v1"
     env(APP_DIGISPOOF_LOCATION): "https://zuid-drecht.nl/digispoof"
     env(APP_EHERKENNING_LOCATION): "https://zuid-drecht.nl/eherkenning"
+    env(INGRESS_HOST): ""
+    env(INGRESS_PATH): ""
 
     app_env: "%env(APP_ENV)%"
     app_container: "%env(APP_CONTAINER)%"
@@ -96,6 +98,8 @@ parameters:
     gmail_secret: "%env(GMAIL_SECRET)%"
     idin_id: "%env(IDIN_ID)%"
     idin_secret: "%env(IDIN_SECRET)%"
+    ingress_host: "%env(INGRESS_HOST)%"
+    ingress_path: "%env(INGRESS_PATH)%"
 
     # Busnes Engine
     env(APP_COMMONGROUND_BE_LOCATION): "https://ac.%env(APP_DOMAIN)%"
@@ -332,6 +336,8 @@ twig:
         idin_id: "%env(IDIN_ID)%"
         idin_secret: "%env(IDIN_SECRET)%"
         app_type: "%env(APP_TYPE)%"
+        ingress_host: "%env(INGRESS_HOST)%"
+        ingress_path: "%env(INGRESS_PATH)%"
 
         # Security Details
         app_commonground_id: "%env(APP_COMMONGROUND_ID)%"
