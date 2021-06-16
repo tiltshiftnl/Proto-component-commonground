@@ -17,7 +17,6 @@ data:
   app-id: {{ .Values.config.id | quote }}
   {{ end }}
   app-domain: {{ .Values.config.domain | quote }} 
-  app-type: {{ .Values.config.type | quote }}
   app-web: {{ .Values.config.web | quote }}
   app-subpath-routing: {{ .Values.config.subpathRouting | quote }}
   app-subpath: {{ .Values.config.subpath | quote }}
@@ -33,9 +32,11 @@ data:
   trusted-hosts: {{ .Values.config.trustedHosts | quote }}
   php-service: {{ .Values.config.name }}-{{ .Values.config.env }}-php  
 
+  digispoof-location: {{ .Values.commonground.digispoof.location }}
+  eherkenning-location: {{ .Values.commonground.eherkenning.location }}
+
   {{- if (eq $.Values.config.type "application" ) }}
   redis-host: {{ printf "%s-redis" $redisServiceName | quote }}
   redis-port: {{ .Values.redis.redisPort | toString | quote }}
-  digispoof-location: { { .Values.commonground.digispoof.location } }
-  eherkenning-location: { { .Values.commonground.eherkenning.location } }
+
   {{-end }}

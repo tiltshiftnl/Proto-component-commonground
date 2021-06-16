@@ -16,7 +16,6 @@ config:
   web: false
   debug: 1
   cache: false
-  type: component
   id: 
   internal: false
   replicaCount: 1
