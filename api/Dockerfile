@@ -65,23 +65,6 @@ WORKDIR /srv/api
 COPY --from=api_platform_php /srv/api/public public/
 
 #############################
-# 		"varnish" stage 	#
-#############################
-# does not depend on any of the above stages, but placed here to keep everything in one Dockerfile
-FROM conduction/pc-varnish:prod AS api_platform_varnish
-
-COPY docker/varnish/conf/default.vcl /etc/varnish/conf.d/
-# Lets install envsubst
-#RUN apk --no-cache add gettext
-
-#COPY docker/varnish/conf /usr/local/etc/varnish/
-
-#RUN envsubst '$PHP_SERVICE' < /usr/local/etc/varnish/default.vcl.template > /usr/local/etc/varnish/default.vcl
-
-# Lets parse the toml file
-# RUN envsubst < /usr/local/etc/varnish/default.vcl.template > /usr/local/etc/varnish/default.vcl
-
-#############################
 # 		NLX Outway	 		#
 #############################
 # does not depend on any of the above stages, but placed here to keep everything in one Dockerfile

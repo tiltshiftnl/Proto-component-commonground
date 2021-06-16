@@ -34,14 +34,6 @@ nginx:
   pullPolicy: Always
   replicaCount: 2
 
-varnish:
-  enabled: true
-  #url: https://example.com
-  repository: docker.io/conduction/protocomponent-varnish
-  tag: latest
-  pullPolicy: Always
-  replicaCount: 1
-
 postgresql:
   enabled: true
   imageTag: 10-alpine
@@ -81,9 +73,6 @@ ingress:
       # - example.com
       # - mercure.example.com
   hosts:
-    api:
-      host: example.com
-      serviceName: varnish
     mercure:
       host: mercure.example.com
       serviceName: mercure
