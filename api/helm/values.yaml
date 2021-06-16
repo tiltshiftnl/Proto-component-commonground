@@ -4,16 +4,16 @@
 
 settings:
   registryBase: docker.io/conduction
-  projectName: digispoof-interface
-  name: digispoof-interface
+  projectName: proto-component-commonground
+  name: proto-component-commonground
   version: V1.0
   majorVersion: v1
-  description: 'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'
-  repro: https://github.com/ConductionNL/digispoof-interface
+  description: 'Het Proto Component vormt zowel de gemeenschappelijke basis onder alle componenten, als een “template” voor het maken van nieuwe componenten.'
+  repro: https://github.com/ConductionNL/proto-component-commonground
   demo: pc.zaakonline.nl
   domain: conduction.nl
-  subdomain: digispoof-interface
-  subpath: digispoof
+  subdomain: proto-component-commonground
+  subpath: proto-component-commonground
   subpathRouting: true
   env: dev
   web: false
@@ -21,6 +21,7 @@ settings:
   cache: false
   type: component
   id: 
+  internal: false
   replicaCount: 1
   corsAllowOrigin: ['*']
   trustedHosts: '^.+$'
@@ -55,10 +56,9 @@ php:
 redis:
   cluster:
     enabled: false
-  enabled: false
   redisPort: 6379
   usePassword: false
-
+  enabled: false
 commonground:
   eherkenning:
     location: https://conduction.nl/eherkenning
@@ -90,7 +90,7 @@ postgresql:
   # Persistent Volume Storage configuration.
   # ref: https://kubernetes.io/docs/user-guide/persistent-volumes
   persistence:
-    enabled: false
+    enabled: true
   pullPolicy: IfNotPresent
 #  image:
 #    repository: postgres
