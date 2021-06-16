@@ -105,7 +105,6 @@ Or just restart the containers of the component
 ```CLI
 $ kubectl rollout restart deployments/pc-php --namespace dev --kubeconfig kubeconfig.yaml
 $ kubectl rollout restart deployments/pc-nginx --namespace dev --kubeconfig kubeconfig.yaml
-$ kubectl rollout restart deployments/pc-varnish --namespace dev --kubeconfig kubeconfig.yaml
 ``` 
 
 Or del if you want to delete an existing one

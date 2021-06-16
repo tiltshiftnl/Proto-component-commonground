@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.settings.name }}
+  name: {{ .Values.config.name }}
   labels:
-    app.kubernetes.io/name: {{ .Values.settings.name }}
-    app.kubernetes.io/part-of: {{ .Values.settings.name }}
+    app.kubernetes.io/name: {{ .Values.config.name }}
+    app.kubernetes.io/part-of: {{ .Values.config.name }}
     helm.sh/chart: {{ include "chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
@@ -20,5 +20,5 @@ spec:
       protocol: TCP
       name: https
   selector:
-    app.kubernetes.io/name: {{ .Values.settings.name }}-nginx
+    app.kubernetes.io/name: {{ .Values.config.name }}-nginx
     app.kubernetes.io/instance: {{ .Release.Name }}
