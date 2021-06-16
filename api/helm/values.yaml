@@ -28,9 +28,6 @@ settings:
     - 10.0.0.0/8
     - 172.16.0.0/12
     - 192.168.0.0/16
-  # If you are running a single component on a kubernetes cluster you can just easily enable the load balancer, if not you need to set up a multi component load balancer
-  loadbalancerEnabled: false
-  # If you are running a single component on a kubernetes cluster you can just easily enable the load balancer, if not you need to set up a multi component load balancer
   notificationEnabled: false
   audittrailEnabled: false
   authorisationEnabled: false
