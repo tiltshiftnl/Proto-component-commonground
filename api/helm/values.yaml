@@ -8,9 +8,6 @@ settings:
   name: proto-component-commonground
   version: V1.0
   majorVersion: v1
-  description: 'Het Proto Component vormt zowel de gemeenschappelijke basis onder alle componenten, als een “template” voor het maken van nieuwe componenten.'
-  repro: https://github.com/ConductionNL/proto-component-commonground
-  demo: pc.zaakonline.nl
   domain: conduction.nl
   subdomain: proto-component-commonground
   subpath: proto-component-commonground
@@ -70,14 +67,6 @@ nginx:
   tag: latest
   pullPolicy: Always
   replicaCount: 2
-
-varnish:
-  enabled: true
-  #url: https://example.com
-  repository: docker.io/conduction/protocomponent-varnish
-  tag: latest
-  pullPolicy: Always
-  replicaCount: 1
 
 postgresql:
   enabled: true

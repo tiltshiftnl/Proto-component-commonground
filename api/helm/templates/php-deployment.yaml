@@ -54,11 +54,6 @@ spec:
                 configMapKeyRef:
                   name: {{ template "fullname" . }}
                   key: app-name
-            - name: APP_DESCRIPTION
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ template "fullname" . }}
-                  key: app-description
             - name: APP_VERSION
               valueFrom:
                 configMapKeyRef:
@@ -86,17 +81,6 @@ spec:
                         name: {{ template "fullname" . }}
                         key: app-id
             {{ end }}
-            - name: APP_DEMO
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ template "fullname" . }}
-                  key: app-demo
-
-            - name: APP_REPRO
-              valueFrom:
-                  configMapKeyRef:
-                      name: {{ template "fullname" . }}
-                      key: app-repro
             - name: APP_DOMAIN
               valueFrom:
                   configMapKeyRef:
