@@ -3,11 +3,7 @@
 # Declare variables to be passed into your templates.
 
 config:
-    # Onderstaande twee dingen samen trekken tot image  naar de lose container
-    registryBase: docker.io/conduction
-    projectName: proto-component-commonground
     version: V1.0 # latest en imageTag
-    env: dev # vervallen
     debug: 0
     cache: true
     internal: false
@@ -21,6 +17,7 @@ security:
 
 php:
     repository: docker.io/conduction/protocomponent-php
+    image: docker.io/conduction/proto-component-commonground-php
     tag: latest #imageTag
     secret: "" #security
     replicaCount: 2
@@ -39,9 +36,9 @@ redis:
     enabled: false
     pullPolicy: IfNotPresent
 
-# refactor conform afgesproken
 nginx:
     repository: docker.io/conduction/protocomponent-nginx
+    image: docker.io/conduction/proto-component-commonground-nginx
     tag: latest
     pullPolicy: Always
     replicaCount: 2

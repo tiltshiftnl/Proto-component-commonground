@@ -24,12 +24,8 @@ spec:
     spec:
       containers:
         - name: {{ .Release.Name }}-nginx
-        {{ if eq .Values.config.env "prod"}}
-          image: "{{ .Values.config.registryBase }}/{{ .Values.config.projectName }}-nginx:latest"
-        {{ else }}
-          image: "{{ .Values.config.registryBase }}/{{ .Values.config.projectName }}-nginx:{{ .Values.config.env }}"
-        {{ end }}
-          imagePullPolicy: {{ .Values.php.pullPolicy }}
+          image: {{ .Values.nginx.image }}
+          imagePullPolicy: {{ .Values.nginx.pullPolicy }}
           ports:
             - containerPort: 80
           env:

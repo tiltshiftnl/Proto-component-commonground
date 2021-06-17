@@ -10,13 +10,10 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 data:
-  project_name: {{ .Values.config.projectName | quote }}
   app-version: {{ .Values.config.version | quote }}
   app-authorization: {{ .Values.config.authorisation | quote }}
   app-notification: {{ .Values.config.notification | quote }}
-  
   cache: {{ .Values.config.cache | quote }}
-  env: {{ .Values.config.env | quote }}
   debug: {{ .Values.config.debug | quote }}
   trusted-proxies: {{ join "," .Values.php.trustedProxies }}
   trusted-hosts: {{ .Values.php.trustedHosts | quote }}

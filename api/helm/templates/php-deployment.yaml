@@ -29,11 +29,7 @@ spec:
               defaultMode: 420
       containers:
         - name: {{ .Release.Name }}-php
-        {{ if eq .Values.config.env "prod"}}
-          image: "{{ .Values.config.registryBase }}/{{ .Values.config.projectName }}-php:latest"
-        {{ else }}
-          image: "{{ .Values.config.registryBase }}/{{ .Values.config.projectName }}-php:{{ .Values.config.env }}"
-        {{ end }}
+          image: {{ .Values.php.image }}
           imagePullPolicy: {{ .Values.php.pullPolicy }}
           ports:
             - containerPort: 9000
