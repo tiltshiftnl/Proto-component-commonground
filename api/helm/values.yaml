@@ -2,128 +2,80 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-settings:
-  registryBase: docker.io/conduction
-  projectName: proto-component-commonground
-  name: proto-component-commonground
-  version: V1.0
-  majorVersion: v1
-  description: 'Het Proto Component vormt zowel de gemeenschappelijke basis onder alle componenten, als een “template” voor het maken van nieuwe componenten.'
-  repro: https://github.com/ConductionNL/proto-component-commonground
-  demo: pc.zaakonline.nl
-  domain: conduction.nl
-  subdomain: proto-component-commonground
-  subpath: proto-component-commonground
-  subpathRouting: true
-  env: dev
-  web: false
-  debug: 1
-  cache: false
-  type: component
-  id: 
-  internal: false
-  replicaCount: 1
-  corsAllowOrigin: ['*']
-  trustedHosts: '^.+$'
-  pullPolicy: Always
-  # You will need these proxies on kubernetes
-  trustedProxies:
-    - 10.0.0.0/8
-    - 172.16.0.0/12
-    - 192.168.0.0/16
-  # If you are running a single component on a kubernetes cluster you can just easily enable the load balancer, if not you need to set up a multi component load balancer
-  loadbalancerEnabled: false
-  # If you are running a single component on a kubernetes cluster you can just easily enable the load balancer, if not you need to set up a multi component load balancer
-  notificationEnabled: false
-  audittrailEnabled: false
-  authorisationEnabled: false
-  healthEnabled: false
-  archiveEnabled: false
+config:
+    # Onderstaande twee dingen samen trekken tot image  naar de lose container
+    registryBase: docker.io/conduction
+    projectName: proto-component-commonground
+    version: V1.0 # latest en imageTag
+    env: dev # vervallen
+    debug: 0
+    cache: true
+    internal: false
+    corsAllowOrigin: ['*'] # naar de losse contianers
+    notification:
+    authorisation:
 
 security:
-  applicationKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
-
+    # uit elkaar trekken en refactor  
+    applicationKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
 
 php:
-  repository: docker.io/conduction/protocomponent-php
-  tag: latest
-  mercure:
-    jwtSecret: ""
-  env: prod
-  secret: ""
-  replicaCount: 2
+    repository: docker.io/conduction/protocomponent-php
+    tag: latest #imageTag
+    secret: "" #security
+    replicaCount: 2
+    pullPolicy: Always
+    trustedHosts: '^.+$'
+    trustedProxies:
+        - 10.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
 
 redis:
-  cluster:
+    cluster:
+        enabled: false
+    redisPort: 6379
+    usePassword: false
     enabled: false
-  redisPort: 6379
-  usePassword: false
-  enabled: false
-commonground:
-  eherkenning:
-    location: https://conduction.nl/eherkenning
-  digispoof:
-    location: https://conduction.nl/digispoof
+    pullPolicy: IfNotPresent
 
+# refactor conform afgesproken
 nginx:
-  repository: docker.io/conduction/protocomponent-nginx
-  tag: latest
-  pullPolicy: Always
-  replicaCount: 2
-
-varnish:
-  enabled: true
-  #url: https://example.com
-  repository: docker.io/conduction/protocomponent-varnish
-  tag: latest
-  pullPolicy: Always
-  replicaCount: 1
+    repository: docker.io/conduction/protocomponent-nginx
+    tag: latest
+    pullPolicy: Always
+    replicaCount: 2
 
 postgresql:
-  enabled: true
-  imageTag: 10-alpine
-  # If bringing your own PostgreSQL, the full uri to use
-  #url: pgsql://api-platform:!ChangeMe!@example.com/api?serverVersion=10.1
-  postgresqlUsername: "example"
-  postgresqlPassword: "!ChangeMe!"
-  postgresqlDatabase: "api"
-  # Persistent Volume Storage configuration.
-  # ref: https://kubernetes.io/docs/user-guide/persistent-volumes
-  persistence:
-    enabled: true
-  pullPolicy: IfNotPresent
+    enabled: true #stretch goal koppelen aan url
+    imageTag: 10-alpine
+    # If bringing your own PostgreSQL, the full uri to use
+    url:
+    postgresqlUsername: "example"
+    postgresqlPassword: "!ChangeMe!"
+    postgresqlDatabase: "api"
+    # Persistent Volume Storage configuration.
+    # ref: https://kubernetes.io/docs/user-guide/persistent-volumes
+    persistence:
+        enabled: true
+    pullPolicy: IfNotPresent
 #  image:
 #    repository: postgres
 #    tag: alpine
 
-mercure:
-  enabled: true
-  publishUrl: http://mercure/hub
-  subscribeUrl: https://mercure.example.com/hub
-  allowAnonymous: "1"
-  corsAllowedOrigins: "^https?://.*?\\.example\\.com$"
-  acmeHosts: "" # TODO: Fix the Mercure chart
-  service:
-    type: NodePort
-    port: 80
-
+#kijk even naar de bitnami way
 ingress:
-  annotations:
+    enabled: false
+    hostname: proto-component.local
+    path: /
+    annotations:
     # kubernetes.io/ingress.global-static-ip-name: chart-ip
     # kubernetes.io/ingress.class: gce
     # kubernetes.io/tls-acme: "true"
-  tls:
+    tls:
     # Secrets must be manually created in the namespace, you can also use cert-manager.
     # - hosts:
-      # - example.com
-      # - mercure.example.com
-  hosts:
-    api:
-      host: example.com
-      serviceName: varnish
-    mercure:
-      host: mercure.example.com
-      serviceName: mercure
+    # - example.com
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -135,4 +87,4 @@ resources: {}
   #  memory: 128Mi
   # requests:
   #  cpu: 100m
-  #  memory: 128Mi
+#  memory: 128Mi

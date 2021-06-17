@@ -49,6 +49,8 @@ spec:
               value: '%kernel.project_dir%/config/jwt/public.pem'
             - name: JWT_PASSPHRASE
               value: 'bafe1dc254b45471754c221081f874aa' #@todo this should be a variable
+          -   name: APP_ENV
+              value: 'prod'
             - name: TRUSTED_HOSTS
               valueFrom:
                 configMapKeyRef:
