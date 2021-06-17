@@ -29,7 +29,7 @@ spec:
               defaultMode: 420
       containers:
         - name: {{ .Release.Name }}-php
-          image: {{ .Values.php.image }}
+          image: {{ .Values.php.image }}:latest
           imagePullPolicy: {{ .Values.php.pullPolicy }}
           ports:
             - containerPort: 9000
@@ -87,6 +87,11 @@ spec:
                 secretKeyRef:
                   name: {{ template "fullname" . }}
                   key: database-url
+            - name: CORS_ALLOW_ORIGIN
+              valueFrom:
+                  configMapKeyRef:
+                      name: {{ template "fullname" . }}
+                      key: app-corsAllowOrigin
             - name: APP_APPLICATION_KEY
               valueFrom:
                 secretKeyRef:
