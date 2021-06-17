@@ -3,47 +3,50 @@
 # Declare variables to be passed into your templates.
 
 config:
+  # Onderstaande twee dingen samen trekken tot image  naar de lose container
   registryBase: docker.io/conduction
   projectName: proto-component-commonground
-  name: proto-component-commonground
-  version: V1.0
-  majorVersion: v1
-  domain: conduction.nl
-  subdomain: proto-component-commonground
-  subpath: proto-component-commonground
-  subpathRouting: true
-  env: dev
-  web: false
-  debug: 1
-  cache: false
-  id: 
-  internal: false
-  replicaCount: 1
-  corsAllowOrigin: ['*']
-  trustedHosts: '^.+$'
-  pullPolicy: Always
+  name: proto-component-commonground # kan vervallen
+  version: V1.0 # latest en imageTag
+  majorVersion: v1 #kan weg 
+  # domain en subdomain samentrekken en naar de ingres
+  domain: conduction.nl #vervalt hier
+  subdomain: proto-component-commonground #vervalt hier  
+  subpath: proto-component-commonground # path in de ingres default op /
+  subpathRouting: true # vervalt
+  env: dev # vervallen
+  web: false #vervalt
+  debug: 1 #default false
+  cache: false #default true
+  id: # vervalt 
+  internal: false # false
+  replicaCount: 1 # naar de losse contianers
+  corsAllowOrigin: ['*'] # naar de losse contianers
+  trustedHosts: '^.+$' # naar de losse contianers
+  pullPolicy: Always # naar de losse contianers
   # You will need these proxies on kubernetes
-  trustedProxies:
+  trustedProxies: # naar de losse contianers
     - 10.0.0.0/8
     - 172.16.0.0/12
     - 192.168.0.0/16
-  notificationEnabled: false
-  audittrailEnabled: false
-  authorisationEnabled: false
-  healthEnabled: false
-  archiveEnabled: false
+  notificationEnabled: false <- service opgeeft
+  audittrailEnabled: false  # vervallen
+  authorisationEnabled: false <- service opgeeft
+  healthEnabled: false  # vervallen
+  archiveEnabled: false # vervallen
 
 security:
+  # uit elkaar trekken en refactor  
   applicationKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
 
 
-php:
+php: 
   repository: docker.io/conduction/protocomponent-php
-  tag: latest
-  mercure:
-    jwtSecret: ""
-  env: prod
-  secret: ""
+  tag: latest #imageTag
+  mercure: #komt te vervallen
+    jwtSecret: ""#komt te vervallen
+  env: prod #komt te vervallen
+  secret: "" #security
   replicaCount: 2
 
 redis:
@@ -52,12 +55,15 @@ redis:
   redisPort: 6379
   usePassword: false
   enabled: false
+
+# komt te vervallen  
 commonground:
   eherkenning:
     location: https://conduction.nl/eherkenning
   digispoof:
     location: https://conduction.nl/digispoof
 
+# refactor conform afgesproken
 nginx:
   repository: docker.io/conduction/protocomponent-nginx
   tag: latest
@@ -65,7 +71,7 @@ nginx:
   replicaCount: 2
 
 postgresql:
-  enabled: true
+  enabled: true #stretch goal koppelen aan url
   imageTag: 10-alpine
   # If bringing your own PostgreSQL, the full uri to use
   #url: pgsql://api-platform:!ChangeMe!@example.com/api?serverVersion=10.1
@@ -81,6 +87,7 @@ postgresql:
 #    repository: postgres
 #    tag: alpine
 
+#vervalt
 mercure:
   enabled: true
   publishUrl: http://mercure/hub
@@ -92,9 +99,10 @@ mercure:
     type: NodePort
     port: 80
 
+#kijk even naar de bitnami way
 ingress:
   host: proto-component.local
-  path: /api
+  path: /api #moet / worden
   annotations:
     # kubernetes.io/ingress.global-static-ip-name: chart-ip
     # kubernetes.io/ingress.class: gce
