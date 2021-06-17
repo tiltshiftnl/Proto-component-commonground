@@ -9,8 +9,6 @@ config:
   version: V1.0
   majorVersion: v1
   domain: conduction.nl
-  subdomain: proto-component-commonground
-  subpath: proto-component-commonground
   subpathRouting: true
   env: dev
   web: false
@@ -36,12 +34,9 @@ config:
 security:
   applicationKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
 
-
 php:
   repository: docker.io/conduction/protocomponent-php
   tag: latest
-  mercure:
-    jwtSecret: ""
   env: prod
   secret: ""
   replicaCount: 2
@@ -52,6 +47,7 @@ redis:
   redisPort: 6379
   usePassword: false
   enabled: false
+  
 commonground:
   eherkenning:
     location: https://conduction.nl/eherkenning
@@ -81,17 +77,6 @@ postgresql:
 #    repository: postgres
 #    tag: alpine
 
-mercure:
-  enabled: true
-  publishUrl: http://mercure/hub
-  subscribeUrl: https://mercure.example.com/hub
-  allowAnonymous: "1"
-  corsAllowedOrigins: "^https?://.*?\\.example\\.com$"
-  acmeHosts: "" # TODO: Fix the Mercure chart
-  service:
-    type: NodePort
-    port: 80
-
 ingress:
   host: proto-component.local
   path: /api
@@ -108,10 +93,6 @@ ingress:
     api:
       host: example.com
       serviceName: varnish
-    mercure:
-      host: mercure.example.com
-      serviceName: mercure
-
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
