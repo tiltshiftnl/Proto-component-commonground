@@ -22,6 +22,11 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
         app.kubernetes.io/managed-by: {{ .Release.Service }}
     spec:
+      volumes:
+          - name: dependencies
+            secret:
+              secretName: {{ template "fullname" . }}-dependencies
+              defaultMode: 420
       containers:
         - name: {{ .Release.Name }}-php
         {{ if eq .Values.config.env "prod"}}
@@ -32,6 +37,11 @@ spec:
           imagePullPolicy: {{ .Values.php.pullPolicy }}
           ports:
             - containerPort: 9000
+          volumeMounts:
+            - mountPath: /config/packages/dependencies.yaml
+              subPath: dependencies.yaml
+              name: dependencies
+              readOnly: true
           env:
             - name: JWT_SECRET_KEY
               value: '%kernel.project_dir%/config/jwt/private.pem'

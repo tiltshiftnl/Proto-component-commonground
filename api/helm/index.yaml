@@ -5,7 +5,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-06-16T13:08:13.7267604Z"
+    created: "2021-06-17T13:40:03.2374788Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -37,10 +37,10 @@ entries:
   proto-component-commonground:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-06-16T13:08:13.6848579Z"
+    created: "2021-06-17T13:40:03.2082689Z"
     description: Het Proto Component vormt zowel de gemeenschappelijke basis onder
       alle componenten, als een “template” voor het maken van nieuwe componenten.
-    digest: d8d2327f071dc8a74cce27742dcca950f7045b3f3dd8ce21640f09fc9891224a
+    digest: e8899a6e8b4dbe2026ffcbc5bdaa57d8e9fa0d23fb9a712677b9182fb02b4650
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -60,4 +60,4 @@ entries:
     urls:
     - proto-component-commonground-0.1.0.tgz
     version: 0.1.0
-generated: "2021-06-16T13:08:13.665339Z"
+generated: "2021-06-17T13:40:03.1095709Z"
