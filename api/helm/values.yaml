@@ -18,7 +18,6 @@ php:
     repository: docker.io/conduction/protocomponent-php
     image: docker.io/conduction/proto-component-commonground-php
     tag: latest #imageTag
-    secret: "" #security
     replicaCount: 2
     pullPolicy: Always
     trustedHosts: '^.+$'
