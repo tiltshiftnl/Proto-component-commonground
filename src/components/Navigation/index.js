@@ -44,7 +44,7 @@ const Navigation = ({ location }) => {
   return (
     <StyledNav>
       <StyledTitleLink to={homeLink}>
-        {/*<DemodamLogo />*/}
+        <DemodamLogo />
         <StyledTitle>
 
         </StyledTitle>
