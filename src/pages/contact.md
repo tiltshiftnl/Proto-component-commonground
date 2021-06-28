@@ -1,14 +1,6 @@
-  
+
 # Contact
-## Product Owner
-Gemeente Utrecht
 
-Telefoon 14 030
-
-Adres  
-Stadskantoor  
-Stadsplateau 1  
-3521AZ Utrecht
 ## Technische realisatie
 [Conduction b.v.]( https://www.conduction.nl/)  
 [info@conduction.nl](mailto:info@conduction.nl)  

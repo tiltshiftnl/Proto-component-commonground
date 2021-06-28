@@ -43,7 +43,7 @@ module.exports = {
         short_name: `demodam`,
         start_url: `/`,
         display: `standalone`,
-        icon: `src/images/vng-logo.svg`,
+        icon: `src/images/conduction_logo_blauw.svg`,
       },
     },
     `gatsby-plugin-i18n`,
