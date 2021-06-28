@@ -7,6 +7,7 @@ export const StyledContainer = styled.div`
   ${mediaQueries.mdUp`
     display: grid;
     grid-template-columns: 50% 50%;
+    grid-template-columns: 100%;
   `}
 
   margin-top: ${(p) => p.theme.tokens.spacing10};
@@ -31,20 +32,20 @@ export const StyledImage = styled.div`
 `
 
 export const StyledHeading = styled.h1`
-  color: #fff;
+  color: black;
   font-size: 44px;
   font-weight: ${(p) => p.theme.tokens.fontWeightBold};
 `
 
 export const StyledParagraph = styled.p`
-  color: #fff;
+  color: black;
   font-size: 24px;
   font-style: italic;
   line-height: 30px;
 `
 
 export const StyledSubParagraph = styled.p`
-  color: #fff;
+  color: black;
   font-size: 18px;
   line-height: 30px;
 
@@ -52,5 +53,5 @@ export const StyledSubParagraph = styled.p`
   a {
     color: #ffffff !important;
   }
-  
+
 `

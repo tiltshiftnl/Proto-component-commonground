@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Huwelijksplanner`,
+    title: `Proto component commonground`,
     description: `Demodam is a fictitious municipal website that shows which reusable open source products and services are available for municipalities. This website hosts the community governance and demodam information.`,
     author: `The Demodam Community`,
     repositoryUrl: `https://github.com/demodam/demodam.org/`,
@@ -43,7 +43,7 @@ module.exports = {
         short_name: `demodam`,
         start_url: `/`,
         display: `standalone`,
-        icon: `src/images/utrecht_logo.svg`,
+        icon: `src/images/vng-logo.svg`,
       },
     },
     `gatsby-plugin-i18n`,

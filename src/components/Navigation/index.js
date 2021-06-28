@@ -44,22 +44,22 @@ const Navigation = ({ location }) => {
   return (
     <StyledNav>
       <StyledTitleLink to={homeLink}>
-        <DemodamLogo />
+        {/*<DemodamLogo />*/}
         <StyledTitle>
 
         </StyledTitle>
       </StyledTitleLink>
       <StyledList>
-        <StyledListItem key={420}>
-          <a href="http://huwelijk.demodam.nl/" target="_blank">Demo</a>
-        </StyledListItem>
+        {/*<StyledListItem key={420}>*/}
+        {/*  <a href="http://huwelijk.demodam.nl/" target="_blank">Demo</a>*/}
+        {/*</StyledListItem>*/}
         {menu[langKey].map((item, i) => (
           <StyledListItem key={i}>
             <Link to={item.link} activeClassName="active" partiallyActive={item.partiallyActive}>{item.title}</Link>
           </StyledListItem>
         ))}
         <StyledListItem>
-          <a href="https://github.com/VNG-Realisatie/huwelijksplanner" target="_blank" rel="noopener noreferrer" aria-label="Bekijk project op Github">
+          <a href="https://github.com/ConductionNL/Proto-component-commonground" target="_blank" rel="noopener noreferrer" aria-label="Bekijk project op Github">
             <GithubLogo width="26px" height="24px" />
           </a>
           <a href="https://samenorganiseren.slack.com" target="_blank" rel="noopener noreferrer" aria-label="Wordt lid van het Signalen kanaal op de Common Ground Slack">

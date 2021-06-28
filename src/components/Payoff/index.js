@@ -7,19 +7,14 @@ const Payoff = () => (
   <StyledContainer>
     <StyledIntro>
       <StyledTextContainer>
-        <StyledHeading>Huwelijksplanner</StyledHeading>
-        <StyledParagraph>Een applicatie gebouwd op open source commonground componenten</StyledParagraph>
-        <StyledSubParagraph>Met de huwelijksplanner realiseren we componenten (zowel registratiecomponenten als gebruikersinterface) waarmee gemeenten een goed werkend trouwproces kunnen inrichten. Daarmee voegen we waarde toe en ontzorgen de burger bij het plannen van een huwelijk.</StyledSubParagraph>
-        <StyledSubParagraph>
-            <h4><b>Snelle links:</b></h4>
-            <a target="_blank" href="https://github.com/VNG-Realisatie/huwelijksplanner">Github repository</a><br/>
-            <a target="_blank" href="https://componentencatalogus.commonground.nl/producten/74/omschrijving">VNG componenten catalogus</a>
-        </StyledSubParagraph>
+        <StyledHeading>Proto component commonground</StyledHeading>
+        <StyledParagraph>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</StyledParagraph>
+
       </StyledTextContainer>
     </StyledIntro>
-    <StyledImage>
-      <ResponsiveImage src={couple_on_bike_near_city} alt="Illustratie van een koppel op een scooter in stad" />
-    </StyledImage>
+    {/*<StyledImage>*/}
+      {/*<ResponsiveImage src={couple_on_bike_near_city} alt="Illustratie van een koppel op een scooter in stad" />*/}
+    {/*</StyledImage>*/}
   </StyledContainer>
 )
 
