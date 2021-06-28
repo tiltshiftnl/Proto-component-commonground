@@ -9,7 +9,6 @@ import {
     StyledImage
 } from './index.styles.js'
 import ResponsiveImage from '../ResponsiveImage'
-import couple_on_bike_near_city from '../../images/couple_on_bike_near_city.svg'
 
 const Payoff = () => (
   <StyledContainer>
