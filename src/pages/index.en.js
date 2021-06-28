@@ -24,20 +24,20 @@ import integrationImage from '../images/undraw_hologram_fjwp.svg'
 
 const IndexPage = ({ location }) => (
   <Layout>
-    <SEO title="Wedding planner" />
-    <Background backgroundColor="#CC0000">
+    <SEO title="Proto component commonground"/>
+    <Background backgroundColor="white">
       <Container>
-        <Navigation as="nav" location={location} />
+        {/*<Navigation as="nav" location={location} />*/}
         <Section>
           <Payoff />
         </Section>
       </Container>
     </Background>
-    <Background backgroundColor="#2A5587">
-      <Container>
-        <Logos />
-      </Container>
-    </Background>
+    {/*<Background backgroundColor="#2A5587">*/}
+    {/*  <Container>*/}
+    {/*    <Logos />*/}
+    {/*  </Container>*/}
+    {/*</Background>*/}
     <Container>
       <Section id="about-demodam">
         <Flex>
