@@ -2,7 +2,7 @@ name: Deploy Demo website
 on:
   push:
     branches:
-      - gh-pages
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
