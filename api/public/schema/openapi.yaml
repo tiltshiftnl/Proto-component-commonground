@@ -8,7 +8,7 @@ info:
     - Reference: proto-component-commonground
     - Enviroment: dev
     - Version: V1.0
-    - Repository: [online](https://github.com/ConductionNL/Proto-component-commonground) / [zip](https://github.com/ConductionNL/Proto-component-commonground/archive/master.zip)
+    - Repository: [online](https://github.com/ConductionNL/proto-component-commonground) / [zip](https://github.com/ConductionNL/proto-component-commonground/archive/master.zip)
     - Docker Image: [online]() 
     - Datamodel: [postman](schema/proto-component-commonground.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
 
