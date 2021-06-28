@@ -9,11 +9,11 @@ export const StyledNav = styled.div`
   padding-top: ${(p) => p.theme.tokens.spacing04};
   padding-bottom: ${(p) => p.theme.tokens.spacing04};
   white-space: nowrap;
-  background-color: white;
+  background-color: #4376FC;
 
   a {
     text-decoration: none;
-    color: black !important;
+    color: white !important;
   }
 
   ${mediaQueries.smUp`
@@ -50,7 +50,7 @@ export const StyledListItem = styled.li`
   a {
     padding: ${(p) =>
       `${p.theme.tokens.spacing05} ${p.theme.tokens.spacing05}`};
-    color: black !important;
+    color: white !important;
     font-weight: ${(p) => p.theme.tokens.fontWeightSemiBold};
     text-decoration: none;
 

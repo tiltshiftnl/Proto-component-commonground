@@ -13,8 +13,8 @@ export default function Template({ data, location }) {
 
   return (
     <Layout>
-      <SEO title="Huwelijksplanner" />
-      <Background backgroundColor="#CC0000">
+      <SEO title="Proto component commonground" />
+      <Background backgroundColor="#4376FC">
 
       <nav>
         <Container>
