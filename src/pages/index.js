@@ -16,12 +16,6 @@ import Background from '../components/Background'
 import Logos from '../components/Logos'
 import Timeline from '../components/Timeline'
 
-import casesImage from '../images/undraw_file_analysis_8k9b.svg'
-import selectionImage from '../images/undraw_personal_settings_kihd.svg'
-import authorizationImage from '../images/undraw_two_factor_authentication_namy.svg'
-import dashboardImage from '../images/undraw_dashboard_nklg.svg'
-import integrationImage from '../images/undraw_hologram_fjwp.svg'
-
 const IndexPage = ({location}) => (
   <Layout>
     <SEO title="Proto component commonground"/>
